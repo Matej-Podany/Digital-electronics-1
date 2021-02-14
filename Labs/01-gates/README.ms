@@ -35,7 +35,7 @@ end architecture dataflow;
 ```
 
 ## 2.2
-[logo] images/TheProveOfDeMorgan'sLaw.png "The prove of De Morgan's law"
+![De Morgan's law] (https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/01-gates/images/SimulationTask2.png?raw=true)
 
 ## 2.3
 https://www.edaplayground.com/x/TE7b
