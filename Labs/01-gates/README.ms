@@ -3,7 +3,7 @@ https://github.com/Matej-Podany/Digital-electronics-1
 
 # Task 2
 ## 2.1
-
+```vhdl
 library ieee;               -- Standard library
 use ieee.std_logic_1164.all;-- Package for data types and logic operations
 
@@ -32,7 +32,7 @@ begin
     fnor_o   <= (not (b_i or (not a_i))) or (not (c_i or b_i));
 
 end architecture dataflow;
-
+```
 
 ## 2.2
 ![De Morgan's law] (https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/01-gates/images/SimulationTask2.png?raw=true)
