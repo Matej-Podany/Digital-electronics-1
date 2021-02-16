@@ -76,7 +76,7 @@ end architecture dataflow;
 ```
 
 ## 3.2
-![Distributive laws] (https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/01-gates/images/SimulationTask3.png?raw=true)
+![Distributive laws](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/01-gates/images/SimulationTask3.png "Distributive laws")
 
 ## 3.3
 https://www.edaplayground.com/x/Bcbr
