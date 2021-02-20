@@ -1,4 +1,4 @@
-## Task 1
+# Task 1
 | **Dec. equivalent** | **B[1:0]** | **A[1:0]** | **B is greater than A** | **B equals A** | **B is less than A** |
 | :-: | :-: | :-: | :-: | :-: | :-: |
 | 0 | 0 0 | 0 0 | 0 | 1 | 0 |
@@ -18,4 +18,35 @@
 | 14 | 1 1 | 1 0 | 1 | 0 | 0 |
 | 15 | 1 1 | 1 1 | 0 | 1 | 0 |
 
-## Task 2
+# Task 2
+## 2.1
+**B>A**
+
+
+**B=A**
+
+
+**B<A**
+
+
+## 2.2
+SoP - B is greater than A = b1*(/a1) + b0*(/a1)*(/a0) + b1*b0*(/a0)
+
+PoS - B is less than A = (a1+a0)*(/b1+/b0)*(/b1+a1)*(/b0+a1)*(/b1+a0)
+
+Important note: symbol **/** means expression negation
+
+## 2.3
+https://www.edaplayground.com/x/hvwj
+
+# Task 3
+## 3.1
+
+
+## 3.2
+
+
+## 3.3
+
+
+## 3.4
