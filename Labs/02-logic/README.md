@@ -214,6 +214,7 @@ end architecture testbench;
 ```
 
 ## 3.3
+```
 [2021-02-20 17:35:41 EST] ghdl -i design.vhd testbench.vhd  && ghdl -m  tb_comparator_4bit && ghdl -r  tb_comparator_4bit   
 analyze design.vhd
 analyze testbench.vhd
@@ -222,6 +223,7 @@ testbench.vhd:51:9:@0ms:(report note): Stimulus process started
 testbench.vhd:56:9:@100ns:(assertion error): Test failed for input combination: 0000, 0000
 testbench.vhd:124:9:@1us:(report note): Stimulus process finished
 Done
+```
 
 ## 3.4
 https://www.edaplayground.com/x/8Siq
