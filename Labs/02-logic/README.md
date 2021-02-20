@@ -21,13 +21,13 @@
 # Task 2
 ## 2.1
 **B>A**
-
+![B>A](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/02-logic/images/K-map%20-%20B%20is%20greater%20than%20A.jpg "B>A")
 
 **B=A**
-
+![B=A](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/02-logic/images/K-map%20-%20B%20is%20equal%20to%20A.jpg "B=A")
 
 **B<A**
-
+![B<A](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/02-logic/images/K-map%20-%20B%20is%20less%20than%20A.jpg "B<A")
 
 ## 2.2
 SoP - B is greater than A = b1*(/a1) + b0*(/a1)*(/a0) + b1*b0*(/a0)
