@@ -54,7 +54,7 @@ end architecture Behavioral;
 ```
 
 ## 2.3
-
+![Simulation](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/03-vivado/images/simulation.jpg "Simulation")
 
 # Task 3
 
