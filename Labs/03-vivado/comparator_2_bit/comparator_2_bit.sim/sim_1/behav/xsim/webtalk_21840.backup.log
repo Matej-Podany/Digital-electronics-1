@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Webtalk v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sun Feb 28 09:55:49 2021
+# Process ID: 21840
+# Current directory: D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/03-vivado/comparator_2_bit/comparator_2_bit.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/03-vivado/comparator_2_bit/comparator_2_bit.sim/sim_1/behav/xsim/xsim.dir/comparator_2bit_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/03-vivado/comparator_2_bit/comparator_2_bit.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/03-vivado/comparator_2_bit/comparator_2_bit.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/03-vivado/comparator_2_bit/comparator_2_bit.sim/sim_1/behav/xsim/xsim.dir/comparator_2bit_behav/webtalk/xsim_webtalk.tcl -notrace
+webtalk_transmit: Time (s): cpu = 00:00:00 ; elapsed = 00:00:20 . Memory (MB): peak = 92.652 ; gain = 0.000
+INFO: [Common 17-206] Exiting Webtalk at Sun Feb 28 09:56:08 2021...
