@@ -86,10 +86,6 @@ end architecture Behavioral;
 
 ![Step 7](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/03-vivado/images/7.png "Step 7")
 
-## Step 1
-
-![Step 1](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/03-vivado/images/1.png "Step 1")
-
 ## Step 8
 
 ![Step 8](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/03-vivado/images/8.png "Step 8")
