@@ -8,3 +8,6 @@ This task is done in local README.md file.
 
 ## 03-vivado
 This task is done in local README.md file.
+
+## 04-segment
+This task is done in local README.md file.
