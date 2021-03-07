@@ -3,5 +3,6 @@
 Nov 18 2020
 09:47:47
 D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/04-segment/display/display.srcs/sim_1/new/tb_hex_7seg.vhd,1615044461,vhdl,,,,tb_hex_7seg,,,,,,,,
-D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/04-segment/display/display.srcs/sim_1/new/tb_top.vhd,1615052636,vhdl,,,,tb_top,,,,,,,,
-D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/04-segment/display/display.srcs/sources_1/new/hex_7seg.vhd,1615045349,vhdl,D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/04-segment/display/display.srcs/sim_1/new/tb_top.vhd,,,hex_7seg,,,,,,,,
+D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/04-segment/display/display.srcs/sim_1/new/tb_top.vhd,1615155603,vhdl,,,,tb_top,,,,,,,,
+D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/04-segment/display/display.srcs/sources_1/new/hex_7seg.vhd,1615045349,vhdl,D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/04-segment/display/display.srcs/sources_1/new/top.vhd,,,hex_7seg,,,,,,,,
+D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/04-segment/display/display.srcs/sources_1/new/top.vhd,1615137908,vhdl,D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/04-segment/display/display.srcs/sim_1/new/tb_top.vhd,,,top,,,,,,,,

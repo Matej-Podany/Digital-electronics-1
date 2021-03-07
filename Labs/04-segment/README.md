@@ -1,6 +1,25 @@
 # Task 1
 ## 1.1
+| **AN-PIN** | **AN-PORT** | **AN-DISPLAY-NUMBER** |
+| :-: | :-: | :-: |
+| J17 | AN0 | 1 |
+| J18 | AN1 | 2 |
+| T9 | AN2 | 3 |
+| J14 | AN3 | 4 |
+| P14 | AN4 | 5 |
+| T14 | AN5 | 6 |
+| K2 | AN6 | 7 |
+| U13 | AN7 | 8 |
 
+| **CX-PIN** | **CX-PORT** | **CX-SEGMENT** | **CX-CONNECTION-TO-EVERY-DISPLAY** |
+| :-: | :-: | :-: | :-: |
+| T10 | CA | a | Yes |
+| R10 | CB | b | Yes |
+| K16 | CC | c | Yes |
+| K13 | CD | d | Yes |
+| P15 | CE | e | Yes |
+| T11 | CF | f | Yes |
+| L18 | CG | g | Yes |
 
 ## 1.2
 | **Hex** | **Inputs** | **A** | **B** | **C** | **D** | **E** | **F** | **G** |
