@@ -146,7 +146,7 @@ p_stimulus : process
 ```
 
 ## 2.3
-
+![Simulation](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/04-segment/images/simulation.jpg "Simulation")
 
 ## 2.4
 ```vhdl
@@ -216,3 +216,4 @@ p_stimulus : process
 ```
 
 ## 3.2
+![Simulation](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/04-segment/images/simulation2.png "Simulation")
