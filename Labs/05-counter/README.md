@@ -133,4 +133,5 @@ p_cnt_up_down : process(clk)
         );
 ```
 ## 3.2
-![TopLayer]( "TopLayer")
+![TopLayer](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/05-counter/images/4bitimage.jpg "TopLayer")
+![TopLayer](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/05-counter/images/16bitimage.jpg "TopLayer")
