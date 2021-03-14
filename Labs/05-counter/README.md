@@ -85,8 +85,8 @@ p_cnt_up_down : process(clk)
 	end process p_stimulus;
 ```
 ## 2.3
-![Simulation]( "Simulation")
-![SimulationDetail]( "SimulationDetail")
+![Simulation](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/05-counter/images/simulation1.jpg "Simulation")
+![SimulationDetail](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/05-counter/images/simulation1detail.jpg "SimulationDetail")
 
 # Task 3
 ## 3.1
