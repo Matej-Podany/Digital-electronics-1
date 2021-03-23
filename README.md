@@ -14,3 +14,6 @@ This task is done in local README.md file.
 
 ## 05-counter
 This task is done in local README.md file.
+
+## 06-digital_driver
+This task is done in local README.md file.
