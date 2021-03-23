@@ -1,5 +1,5 @@
 # Task 1
-![valuefigure]( "valuefigure")
+![valuefigure](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/06-display_driver/images/valuefigure.jpg "valuefigure")
 
 # Task 2
 ## 2.1
@@ -146,7 +146,7 @@ end architecture testbench;
 ```
 
 ## 2.3
-![simulation]( "simulation")
+![simulation](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/06-display_driver/images/simulation.jpg "simulation")
 
 ## 2.4
 ```vhdl
@@ -232,4 +232,4 @@ end architecture Behavioral;
 ```
 
 # Task 3
-![figure]( "figure")
+![figure](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/06-display_driver/images/figure.jpg "figure")
