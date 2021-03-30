@@ -132,7 +132,7 @@ p_reset_gen : process
 ```
 
 ## 2.3
-![simulation1]( "simulation1")
+![simulation1](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/07-ffs/images/simulation1.jpg "simulation1")
 
 # Task 3
 ## 3.1
@@ -317,4 +317,4 @@ jk_ff_rst
 
 ## 3.3
 d_ff_arst
-![simulation2a]( "simulation2a")
+![simulation2a](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/07-ffs/images/simulation2a.jpg "simulation2a")
