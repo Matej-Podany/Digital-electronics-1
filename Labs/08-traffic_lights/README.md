@@ -47,8 +47,8 @@ Input: 00
 ## 3.2
 In states Stop1, Stop2, WestWait and SouthWait there is not input displayed, because this states does NOT depend on inputs (car sensors).
 They have fixed time delay (Start => Stop1: 1 second red => WestGo: -conditions in table- => WestWait: 2 seconds yellow => Stop2) and it is same for both directions.
-I just want to saz, that if there are cars from both directions, green will be in one direction 4 seconds. If there is green in one direction and in the same direction is car, at the moment, when car
-will drive from another direction, will green last for 4 seconds before it changes to orange, then red and then green for another direction (to prevent instant changing of lights).
+I just want to say, that if there are cars from both directions, green will be in one direction 4 seconds. If there is green in one direction and in the same direction is car, at the moment, when car
+will drive from another direction, will green last for 4 seconds before it changes to yellow, then red and then green for another direction (to prevent instant changing of lights).
 ![Figure3](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/08-traffic_lights/images/Figure3.jpg "Figure3")
 
 ## 3.3
