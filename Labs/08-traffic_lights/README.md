@@ -36,7 +36,7 @@ Input: 00
 1 = There is car in this direction
 
 | **Current state** | **Direction South** | **Direction West** | **Inputs for stay in this state or fixed delay** | **Inputs for  move to the next state or fixed delay** |
-| :-- | :-: | :-: | :-: |
+| :-- | :-: | :-: | :-: | :-: |
 | `STOP1`      | red    | red | 1 sec | 1 sec |
 | `WEST_GO`    | red    | green | `00,01` | `10`; `11` => 4 sec |
 | `WEST_WAIT`  | red    | yellow | 2 sec | 2 sec |
