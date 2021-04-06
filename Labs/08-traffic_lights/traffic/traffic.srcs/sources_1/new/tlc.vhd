@@ -28,6 +28,7 @@ entity tlc is
     port(
         clk     : in  std_logic;
         reset   : in  std_logic;
+        input   : in  std_logic_vector(2 - 1 downto 0);
         -- Traffic lights (RGB LEDs) for two directions
         south_o : out std_logic_vector(3 - 1 downto 0);
         west_o  : out std_logic_vector(3 - 1 downto 0)
@@ -116,11 +117,55 @@ begin
                         end if;
 
                     when WEST_GO =>
-
-
-                        -- WRITE YOUR CODE HERE
-
-
+                        -- Count up to c_DELAY_4SEC
+                        if (s_cnt < c_DELAY_4SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= WEST_WAIT;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                    when WEST_WAIT =>
+                        -- Count up to c_DELAY_2SEC
+                        if (s_cnt < c_DELAY_2SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= STOP2;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                    when STOP2 =>
+                        -- Count up to c_DELAY_1SEC
+                        if (s_cnt < c_DELAY_1SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= SOUTH_GO;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                    when SOUTH_GO =>
+                        -- Count up to c_DELAY_4SEC
+                        if (s_cnt < c_DELAY_4SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= SOUTH_WAIT;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                    when SOUTH_WAIT =>
+                        -- Count up to c_DELAY_2SEC
+                        if (s_cnt < c_DELAY_2SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= STOP1;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
                     -- It is a good programming practice to use the 
                     -- OTHERS clause, even if all CASE choices have 
                     -- been made. 
@@ -145,15 +190,133 @@ begin
                 south_o <= c_RED;
                 west_o  <= c_RED;
             when WEST_GO =>
-
-
-                -- WRITE YOUR CODE HERE
-
-
+                south_o <= c_RED;
+                west_o  <= c_GREEN;
+            when WEST_WAIT =>
+                south_o <= c_RED;
+                west_o  <= c_YELLOW;
+            when STOP2 =>
+                south_o <= c_RED;
+                west_o  <= c_RED;
+            when SOUTH_GO =>
+                south_o <= c_GREEN;
+                west_o  <= c_RED;
+            when SOUTH_WAIT =>
+                south_o <= c_YELLOW;
+                west_o  <= c_RED;
             when others =>
                 south_o <= c_RED;
                 west_o  <= c_RED;
         end case;
     end process p_output_fsm;
+    --------------------------------------------------------------------
+    -- p_traffic_fsm:
+    -- The sequential process with synchronous reset and clock_enable 
+    -- entirely controls the s_state signal by CASE statement.
+    --------------------------------------------------------------------
+    p_smart_traffic_fsm : process(clk,input)
+    begin
+        if rising_edge(clk) then -- There is no problem, if code will react with delay <250 ms, so no need for change
+            if (reset = '1') then       -- Synchronous reset
+                s_state <= STOP1 ;      -- Set initial state
+                s_cnt   <= c_ZERO;      -- Clear all bits
+
+            elsif (s_en = '1') then
+                -- Every 250 ms, CASE checks the value of the s_state 
+                -- variable and changes to the next state according 
+                -- to the delay value.
+                case s_state is
+
+                    -- If the current state is STOP1, then wait 1 sec
+                    -- and move to the next GO_WAIT state.
+                    when STOP1 =>
+                        -- Count up to c_DELAY_1SEC
+                        if (s_cnt < c_DELAY_1SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= WEST_GO;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+
+                    when WEST_GO =>
+                        -- Condition for staying in this state !!! Higher bit is North (South) and the lower is East (West)
+                        if (input = "00" or input = "01") then
+                            null;
+                        elsif (input = "10") then
+                            -- Move to the next state immedialently, because in West (East) direction is not car
+                            s_state <= WEST_WAIT;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        elsif (input = "11") then
+                            -- Move to the next state after 4 seconds, this prevents immedialent color switching.
+                            if (s_cnt < c_DELAY_4SEC) then
+                                s_cnt <= s_cnt + 1;
+                            else
+                                s_state <= WEST_WAIT;
+                            end if;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                    when WEST_WAIT =>
+                        -- Count up to c_DELAY_2SEC
+                        if (s_cnt < c_DELAY_2SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= STOP2;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                    when STOP2 =>
+                        -- Count up to c_DELAY_1SEC
+                        if (s_cnt < c_DELAY_1SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= SOUTH_GO;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                    when SOUTH_GO =>
+                        -- Condition for staying in this state !!! Higher bit is North (South) and the lower is East (West)
+                        if (input = "00" or input = "10") then
+                            null;
+                        elsif (input = "01") then
+                            -- Move to the next state immedialently, because in South (North) direction is not car
+                            s_state <= SOUTH_WAIT;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        elsif (input = "11") then
+                            -- Move to the next state after 4 seconds, this prevents immedialent color switching.
+                            if (s_cnt < c_DELAY_4SEC) then
+                                s_cnt <= s_cnt + 1;
+                            else
+                                s_state <= SOUTH_WAIT;
+                            end if;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                    when SOUTH_WAIT =>
+                        -- Count up to c_DELAY_2SEC
+                        if (s_cnt < c_DELAY_2SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= STOP1;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                    -- It is a good programming practice to use the 
+                    -- OTHERS clause, even if all CASE choices have 
+                    -- been made. 
+                    when others =>
+                        s_state <= STOP1;
+
+                end case;
+            end if; -- Synchronous reset
+        end if; -- Rising edge
+    end process p_smart_traffic_fsm;
 
 end architecture Behavioral;
