@@ -19,7 +19,7 @@ This task is done in local README.md file.
 This task is done in local README.md file.
 
 ## 07-ffs
-This task is almost done in local README.md file.
+This task is done in local README.md file.
 
 ## 08-traffic_lights
-This task is almost done in local README.md file.
+This task is done in local README.md file.
