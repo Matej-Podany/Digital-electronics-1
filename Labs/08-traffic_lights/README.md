@@ -30,7 +30,7 @@
 # Task 3
 ## 3.1
 Input: 00
- North_||_East
+North_||_East
 
 0 = There is not car in this direction
 1 = There is car in this direction
