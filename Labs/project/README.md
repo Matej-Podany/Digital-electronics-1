@@ -127,4 +127,4 @@ end Behavioral;
 
 ```
 # simulation
-![Simulation]( "Simulation")
+![Simulation](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/images/Simulation.jpg "Simulation")
