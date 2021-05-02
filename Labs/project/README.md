@@ -1941,7 +1941,7 @@ end Behavioral;
 ## TOP module description and simulations (Arty A7-35)
 
 ### Schematic diagram
-![TOP schematic]( "TOP schematic")
+![TOP schematic](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/TOP/images/schematic.jpg "TOP schematic")
 
 ### TOP
 ```vhdl
