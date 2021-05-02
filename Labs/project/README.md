@@ -1,9 +1,9 @@
 # Cyklo tachometr (cyclo tachometer)
 
 ## Team members
-Rajm Jan
-Podaný Matěj
-Rohal´ Pavol
+Rajm Jan, 
+Podaný Matěj, 
+Rohal´ Pavol, 
 Pelka Jan
 
 [Project folder](https://github.com/Matej-Podany/Digital-electronics-1/tree/main/Labs/project)
