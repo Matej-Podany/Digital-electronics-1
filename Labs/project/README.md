@@ -162,4 +162,5 @@ zkušeností. Jsou tu nedostatky, avšak velmi dobře fungujících věcí je tu
  
 ## References
 
-   1. Write your text here.
+   1. Digilent - [**Arty A7-35 schematic**](https://reference.digilentinc.com/_media/reference/programmable-logic/arty-a7/arty_a7_sch.pdf)
+   2. Digilent - [**Arty A7-35 reference manual**](https://reference.digilentinc.com/reference/programmable-logic/arty-a7/reference-manual)
