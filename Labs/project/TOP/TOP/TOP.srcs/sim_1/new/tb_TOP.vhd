@@ -36,10 +36,10 @@ uut_top: entity work.top
 p_reset_gen : process
     begin
         s_button2 <= '0';
-        --wait for 7128 ms;
-        --s_button2 <= '1'; -- one push of the reset button
-        --wait for 53 ms;
-        --s_button2 <= '0';
+        wait for 14000 ms;
+        s_button2 <= '1'; -- one push of the reset button
+        wait for 500 ms;
+        s_button2 <= '0';
         wait;
     end process p_reset_gen;
     

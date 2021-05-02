@@ -26,7 +26,7 @@ architecture Behavioral of option is
     signal s_state  : state;
     
 begin
-    p_choose_state : process(btn_i)
+    p_choose_state : process(btn_i, s_state)
     begin
         case s_state is
             when VELOCITY =>

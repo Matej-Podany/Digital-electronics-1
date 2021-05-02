@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Company: VUT FEKT
--- Engineer: Rajm Jan
+-- Engineer: Rajm Jan, Mat?j Podaný
 -- 
 -- Design Name: COMPUTATION
 -- Module Name: COMPUTATION
@@ -18,7 +18,7 @@ entity computation is
     reset_i    : in std_logic;
     clk1hz_i   : in std_logic;
     sensor_i   : in std_logic;
-    value_o    : out std_logic_vector(10-1 downto 0)
+    s1_value   : out std_logic_vector(10-1 downto 0)
   );
 end computation;
 
@@ -36,7 +36,7 @@ p_velocity : entity work.velocity
             velocity_o => s_velocity
         );
 
-p_avg_velocity : entity work.e_avg_velocity 
+p_avg_velocity : entity work.avg_velocity 
         port map(
             clk1hz_i       => clk1hz_i,
             reset_i        => reset_i,
@@ -60,4 +60,10 @@ p_output : entity work.output
             velocity_i     => s_velocity,
             value_o        => s_value
         );
+ p_finaloutput : process(clk1hz_i)
+        begin
+            if rising_edge(clk1hz_i) then
+                s1_value <= s_value;
+            end if;
+        end process p_finaloutput;
 end Behavioral;

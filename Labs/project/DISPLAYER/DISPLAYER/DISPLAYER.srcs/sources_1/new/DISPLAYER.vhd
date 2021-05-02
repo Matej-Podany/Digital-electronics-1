@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Company: VUT FEKT
--- Engineer: Rohal´ Pavol
+-- Engineer: Rohal´ Pavol, Mat?j Podaný
 -- 
 -- Design Name: DISPLAYER
 -- Module Name: DISPLAYER
@@ -20,9 +20,9 @@ use ieee.numeric_std.all;
 entity displayer is                                             --entity of displayer block (all requier inputs/outputs)
     port(
         clk125hz_i  : in std_logic;
-        value_i     : in std_logic_vector(10 - 1 downto 0);       
-        display_o   : out std_logic_vector(4 - 1 downto 0);        
-        seg_o       : out std_logic_vector(3 - 1 downto 0);
+        value_i     : in std_logic_vector(10 - 1 downto 0) := "0000000000";       
+        display_o   : out std_logic_vector(3 - 1 downto 0);        
+        seg_o       : out std_logic_vector(4 - 1 downto 0);
         cnt         : out std_logic_vector(2 - 1 downto 0)      --outputing <cnt> only for visualizing in WF
     );
 end entity displayer;
@@ -51,9 +51,9 @@ architecture dataflow of displayer is
         s_d3 <= dec-(s_d1*100)-(s_d2*10);
 
         case s_count is                                                                             --case statment for writing individual data to specific segment
-            when 0 => display_o <= std_logic_vector(to_unsigned(s_d1, 4)); seg_o <= "001";
-            when 1 => display_o <= std_logic_vector(to_unsigned(s_d2, 4)); seg_o <= "010";
-            when others => display_o <= std_logic_vector(to_unsigned(s_d3, 4)); seg_o <= "100";
+            when 0 => seg_o <= std_logic_vector(to_unsigned(s_d1, 4)); display_o <= "001";
+            when 1 => seg_o <= std_logic_vector(to_unsigned(s_d2, 4)); display_o <= "010";
+            when others => seg_o <= std_logic_vector(to_unsigned(s_d3, 4)); display_o <= "100";
         end case;
     end process p_stimulus;
 end architecture dataflow;

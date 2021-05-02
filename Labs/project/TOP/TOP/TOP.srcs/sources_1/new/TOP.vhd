@@ -46,14 +46,16 @@ COMPUTATION : entity work.computation
             reset_i  => button2_i,
             sensor_i => hall_i,
             status_i => s_status,
-            value_o  => s_value
+            s1_value => s_value
         );
         
 DISPLAYER : entity work.displayer 
         port map(
             value_i    => s_value,
             clk125hz_i => s_clk125hz,
-            display_o  => number_o,
-            seg_o      => adress_o
+            display_o  => adress_o,
+            seg_o      => number_o
         );
+        
+        
 end Behavioral;

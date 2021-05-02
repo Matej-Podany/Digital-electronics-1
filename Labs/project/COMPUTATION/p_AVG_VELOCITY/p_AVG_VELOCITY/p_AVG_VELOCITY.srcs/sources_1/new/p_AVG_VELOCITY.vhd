@@ -14,16 +14,16 @@ use IEEE.math_real.all;                 -- Needed for power
 use ieee.std_logic_1164.all;            -- Basic library
 use ieee.numeric_std.all;               -- Needed for shifts
 
-entity e_avg_velocity is
+entity avg_velocity is
     Port (
         clk1hz_i       : in std_logic;
         reset_i        : in std_logic;
         vel2avg_i      : in std_logic_vector(10-1 downto 0);
         avg_velocity_o : out std_logic_vector(10-1 downto 0)  := "0000000000"  
     );
-end e_avg_velocity;
+end avg_velocity;
  
-architecture behave of e_avg_velocity is
+architecture behave of avg_velocity is
 
   signal sum_of_velocities     : unsigned(10-1 downto 0) := "0000000000";
   
@@ -53,8 +53,8 @@ p_avg_velocity : process(clk1hz_i, reset_i)
             end if;
         
             clk_cycles := clk_cycles - 1;        
-          
-        end if;
+      
+    end if;
     end if;
   end process p_avg_velocity;
 end architecture behave;

@@ -1,0 +1,48 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sun May  2 23:57:28 2021
+# Process ID: 13256
+# Current directory: D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/TOP/TOP/TOP.runs/synth_1
+# Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
+# Log file: D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/TOP/TOP/TOP.runs/synth_1/top.vds
+# Journal file: D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/TOP/TOP/TOP.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source top.tcl -notrace
+Command: synth_design -top top -part xc7a35ticsg324-1L
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35ti'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35ti'
+INFO: [Device 21-403] Loading part xc7a35ticsg324-1L
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 21684
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1002.254 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'top' [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/TOP/TOP/TOP.srcs/sources_1/new/TOP.vhd:29]
+INFO: [Synth 8-638] synthesizing module 'option' [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/OPTION/OPTION/OPTION.srcs/sources_1/new/OPTION.vhd:22]
+INFO: [Synth 8-256] done synthesizing module 'option' (1#1) [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/OPTION/OPTION/OPTION.srcs/sources_1/new/OPTION.vhd:22]
+INFO: [Synth 8-638] synthesizing module 'clock' [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/CLOCK/CLOCK/CLOCK.srcs/sources_1/new/CLOCK.vhd:26]
+	Parameter num_cycles bound to: 1 - type: integer 
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: wait statement with no conditon [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/CLOCK/CLOCK/CLOCK.srcs/sources_1/new/CLOCK.vhd:33]
+WARNING: [Synth 8-312] ignoring unsynthesizable construct: wait statement with no conditon [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/CLOCK/CLOCK/CLOCK.srcs/sources_1/new/CLOCK.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'clock' (2#1) [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/CLOCK/CLOCK/CLOCK.srcs/sources_1/new/CLOCK.vhd:26]
+INFO: [Synth 8-638] synthesizing module 'computation' [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/COMPUTATION/COMPUTATION/COMPUTATION.srcs/sources_1/new/COMPUTATION.vhd:25]
+INFO: [Synth 8-638] synthesizing module 'velocity' [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/COMPUTATION/p_VELOCITY/p_VELOCITY/p_VELOCITY.srcs/sources_1/new/p_VELOCITY.vhd:25]
+INFO: [Synth 8-256] done synthesizing module 'velocity' (3#1) [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/COMPUTATION/p_VELOCITY/p_VELOCITY/p_VELOCITY.srcs/sources_1/new/p_VELOCITY.vhd:25]
+INFO: [Synth 8-638] synthesizing module 'avg_velocity' [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/COMPUTATION/p_AVG_VELOCITY/p_AVG_VELOCITY/p_AVG_VELOCITY.srcs/sources_1/new/p_AVG_VELOCITY.vhd:26]
+ERROR: [Synth 8-27] else clause after check for clock not supported [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/COMPUTATION/p_AVG_VELOCITY/p_AVG_VELOCITY/p_AVG_VELOCITY.srcs/sources_1/new/p_AVG_VELOCITY.vhd:45]
+ERROR: [Synth 8-285] failed synthesizing module 'avg_velocity' [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/COMPUTATION/p_AVG_VELOCITY/p_AVG_VELOCITY/p_AVG_VELOCITY.srcs/sources_1/new/p_AVG_VELOCITY.vhd:26]
+ERROR: [Synth 8-285] failed synthesizing module 'computation' [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/COMPUTATION/COMPUTATION/COMPUTATION.srcs/sources_1/new/COMPUTATION.vhd:25]
+ERROR: [Synth 8-285] failed synthesizing module 'top' [D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/TOP/TOP/TOP.srcs/sources_1/new/TOP.vhd:29]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1002.254 ; gain = 0.000
+---------------------------------------------------------------------------------
+RTL Elaboration failed
+INFO: [Common 17-83] Releasing license: Synthesis
+15 Infos, 2 Warnings, 0 Critical Warnings and 5 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+INFO: [Common 17-206] Exiting Vivado at Sun May  2 23:57:44 2021...
