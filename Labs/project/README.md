@@ -1,130 +1,165 @@
-# clock
+# Cyklo tachometr (cyclo tachometer)
+
+## Team members
+Rajm Jan
+Podaný Matěj
+Rohal´ Pavol
+Pelka Jan
+
+[Project folder](https://github.com/Matej-Podany/Digital-electronics-1/tree/main/Labs/project)
+
+## Project objectives
+Naším cílem je vytvořit funkční cyklo tachometr. Na základě zadání jsme se rozhodli, že náš tachometr bude mít tři sedmisegmentové displeje, na kterých bude moci zobrazit aktuální rychlost, průměrnou rychlost a ujetou vzdálenost.
+Důležitou informací pro uživatele je, že je tachometr určen pro kola s poloměřem 31,83 cm, což odpovídá obvodu kola 2 m. Také jsme si zvolili, že veškerá čísla zobrazená na displejích jsou v praktických jednotkách,
+tj. aktuální rychlost v km/h, průměrná rychlost v km/h a ujetá vzdálenost v km. Limity funkčnosti tachometru jsou tedy nastaveny na jakékoli hodnoty, které jsou <= 999. Tachometr má dvě tlačítka, první přepíná mezi zobrazovanou informací,
+přičemž první z nich je aktuální rychlost, pak průměrná rychlost a jako poslední je zde ujetá vzdálenost. Opětovným stisknutím dojde tedy k přepnutí zpět na aktuální rychlost. Druhé tlačítko funkuje jako reset a při jeho stisku dojde
+k vynulování uražené vzdálenosti a průměrné rychlosti.
+
+## Hardware description
+*Hodně si se zajímal o tuto číst Pali, tak jestli chceš, můžeš to dokončit a PDF poslat zpět na Teams, já pak upravím to PDF na Githubu a budeme to moci odevzdat.
+Může tu být co k tomu potřebujeme, A35 deska, navržená deska atd., ale ty víš lépe nežjá, co tu má být :D*
+
+## VHDL modules description and simulations
+
+### Schematic diagram
+![OPTION schematic]( "OPTION schematic")
+
+### OPTION
 ```vhdl
-----------------------------------------------------------------------------------
--- Company: VUT FEKT
--- Engineer: Matěj Podaný
--- 
--- Create Date: 26.04.2021 17:16:04
--- Design Name: clock
--- Module Name: clock - Behavioral
--- Project Name: bicycle tachometer
--- Target Devices: Nexys A7-35
--- 
-----------------------------------------------------------------------------------
-
-
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
-entity clock is
-    generic(
-            num_cycles : natural := 1
-    );
-    Port ( clk1hz_o : out STD_LOGIC;
-           clk125hz_o : out STD_LOGIC
-    );
-    signal clk1hz : std_logic := '1';
-    signal clk125hz : std_logic := '1';
-end clock;
-
-architecture Behavioral of clock is
-
-begin
-    p_clk1hz : process
-    begin
-        for i in 1 to num_cycles loop
-            clk1hz_o <= not clk1hz;
-            wait for 1000 ms;
-            clk1hz_o <= not clk1hz;
-            wait for 1000 ms;
-        end loop;
-    end process p_clk1hz;
-
-    p_clk125hz : process
-    begin
-        for i in 1 to num_cycles loop
-            clk125hz_o <= not clk125hz;
-            wait for 8 ms;
-            clk125hz_o <= not clk125hz;
-            wait for 8 ms;
-        end loop;
-    end process p_clk125hz;
-end Behavioral;
 
 ```
-# tb_clock
+
+### tb_OPTION
 ```vhdl
-----------------------------------------------------------------------------------
--- Company: VUT FEKT
--- Engineer: Matěj Podaný
--- 
--- Create Date: 26.04.2021 17:16:04
--- Design Name: clock
--- Module Name: clock - Behavioral
--- Project Name: bicycle tachometer
--- Target Devices: Nexys A7-35
--- 
-----------------------------------------------------------------------------------
-
-
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
-entity tb_clock is
---  Port ( );
-end tb_clock;
-
-architecture Behavioral of tb_clock is
-    signal s_clk1hz : std_logic;
-    signal s_clk125hz : std_logic;
-begin
-    uut_clock : entity work.clock
-        port map(
-            clk1hz_o => s_clk1hz,
-            clk125hz_o => s_clk125hz
-                );
-    p_clk1hz_gen : process
-    begin
-        while now < 2000 ms loop
-            s_clk1hz <= '0';
-            wait for 1000 ms;
-            s_clk1hz <= '1';
-            wait for 1000 ms;
-        end loop;
-        wait;
-    end process p_clk1hz_gen;
-    
-    p_clk125hz_gen : process
-    begin
-        while now < 2000 ms loop
-            s_clk125hz <= '0';
-            wait for 8 ms;
-            s_clk125hz <= '1';
-            wait for 8 ms;
-        end loop;
-        wait;
-    end process p_clk125hz_gen;
-    
-end Behavioral;
 
 ```
-# simulation
-![Simulation](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/images/Simulation.jpg "Simulation")
+### simulation
+![OPTION simulation]( "OPTION simulation")
+
+### Schematic diagram
+![CLOCK schematic]( "CLOCK schematic")
+
+### CLOCK
+```vhdl
+
+```
+
+### tb_CLOCK
+```vhdl
+
+```
+### simulation
+![CLOCK simulation]( "CLOCK simulation")
+
+### Schematic diagram
+![COMPUTATION schematic]( "COMPUTATION schematic")
+
+### COMPUTATION
+```vhdl
+
+```
+
+### tb_COMPUTATION
+```vhdl
+
+```
+### simulation
+![COMPUTATION simulation]( "COMPUTATION simulation")
+
+### Schematic diagram
+![DISPLAYER schematic]( "DISPLAYER schematic")
+
+### DISPLAYER
+```vhdl
+
+```
+
+### tb_DISPLAYER
+```vhdl
+
+```
+### simulation
+![DISPLAYER simulation]( "DISPLAYER simulation")
+
+### p_VELOCITY
+```vhdl
+
+```
+
+### tb_p_VELOCITY
+```vhdl
+
+```
+
+### simulation
+![p_VELOCITY simulation]( "p_VELOCITY simulation")
+
+### p_AVG_VELOCITY
+```vhdl
+
+```
+
+### tb_p_AVG_VELOCITY
+```vhdl
+
+```
+### simulation
+![p_AVG_VELOCITY simulation]( "p_AVG_VELOCITY simulation")
+
+### p_DISTANCE
+```vhdl
+
+```
+
+### tb_p_DISTANCE
+```vhdl
+
+```
+### simulation
+![p_DISTANCE simulation]( "p_DISTANCE simulation")
+
+### p_OUTPUT
+```vhdl
+
+```
+
+### tb_p_OUTPUT
+```vhdl
+
+```
+### simulation
+![p_OUTPUT simulation]( "p_OUTPUT simulation")
+
+## TOP module description and simulations (Arty A7-35)
+
+### Schematic diagram
+![TOP schematic]( "TOP schematic")
+
+### TOP
+```vhdl
+
+```
+
+### tb_TOP
+```vhdl
+
+```
+### simulation
+![TOP simulation]( "TOP simulation")
+
+## Video
+
+*Write your text here*
+
+## Project valorization
+Stanovené cíle v sekci "project objectives" se ná podařilo z většiny splnit. Navržená deska se třemi sedmisegmentovými displeji funguje dobře počet displejů pro cyklo tachometr je dostačující.
+Podařilo se nám naprogramovat bezchybně počítání uražené vzdálenosti za ideální situace. To znamená, že poloměr kola a tedy i jeho obvod je konstantní a kolo je nepřetržitě v kontaktu s cestou, přičemž nikdy neprokluzuje.
+Také jsme uspěšně vytvořili modul pro počítání průměrné rychlosti, který pomocí informace o aktuální rychlosti počítá váženým průměrem průměrnou rychlost. Jeho přesnost je vysoká, avšak dochází k zanedbatelnému zaorkoluhlování
+na celá čisla, což ale způsobí přesnost na +- 1 km/h. Modul aktuální rychlosti je bohužel v nedostatečné kvalitě a jeho jednoduchý princip umožňuje ukázat rychlost pouze s přesností +- 3,5 km/h. Hodnoty, které dokáže
+zobrazit jsou 0 a násobky 7. Ostatní prvky jako tlačítka pro přepínání zobrazované informace a pro reset fungují bezchybně. Do budoucna by se tedy dalo rozhodně zlepšit modul aktuální rychlosti, který nebyhovuje
+našim stanoveným parametrům. Dále by se dalo vytvořit nastavení obvodu kola, které by mnohonásobně rozšířilo použitelnost tohoto cyklo tachometru. Závěrem tedy bych považoval projekt za úspěšný, který nám dal hodně
+zkušeností. Jsou tu nedostatky, avšak velmi dobře fungujících věcí je tu převaha.
+ 
+## References
+
+   1. Write your text here.
