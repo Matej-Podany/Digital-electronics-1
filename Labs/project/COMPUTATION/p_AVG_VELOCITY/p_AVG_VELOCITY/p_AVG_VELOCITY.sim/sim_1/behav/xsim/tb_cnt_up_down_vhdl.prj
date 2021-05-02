@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../p_AVG_VELOCITY.srcs/sources_1/new/p_AVG_VELOCITY.vhd" \
+"../../../../p_AVG_VELOCITY.srcs/sim_1/new/tb_p_AVG_VELOCITY.vhd" \
+
+# Do not sort compile order
+nosort

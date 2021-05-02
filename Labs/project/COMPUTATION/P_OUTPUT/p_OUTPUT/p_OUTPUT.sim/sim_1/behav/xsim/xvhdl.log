@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/COMPUTATION/P_OUTPUT/p_OUTPUT/p_OUTPUT.srcs/sources_1/new/p_OUTPUT.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'output'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/COMPUTATION/P_OUTPUT/p_OUTPUT/p_OUTPUT.srcs/sim_1/new/tb_p_OUTPUT.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_clock'

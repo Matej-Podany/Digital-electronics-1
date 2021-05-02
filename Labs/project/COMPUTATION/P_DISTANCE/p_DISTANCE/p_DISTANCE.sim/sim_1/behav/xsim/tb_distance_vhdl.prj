@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../p_DISTANCE.srcs/sources_1/new/p_DISTANCE.vhd" \
+"../../../../p_DISTANCE.srcs/sim_1/new/tb_p_DISTANCE.vhd" \
+
+# Do not sort compile order
+nosort

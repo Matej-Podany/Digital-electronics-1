@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/OPTION/OPTION/OPTION.srcs/sources_1/new/OPTION.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'option'
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/VS/4.semestr/BPC-DE1/Computer_exercise/Digital-electronics-1/Labs/project/OPTION/OPTION/OPTION.srcs/sim_1/new/tb_OPTION.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_option'
