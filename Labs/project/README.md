@@ -22,7 +22,7 @@ Může tu být co k tomu potřebujeme, A35 deska, navržená deska atd., ale ty 
 ## VHDL modules description and simulations
 
 ### Schematic diagram
-![OPTION schematic]( "OPTION schematic")
+![OPTION schematic](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/OPTION/images/schematic.jpg "OPTION schematic")
 
 ### OPTION
 ```vhdl
@@ -173,10 +173,10 @@ end architecture testbench;
 ```
 
 ### simulation OPTION
-![OPTION simulation]( "OPTION simulation")
+![OPTION simulation](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/OPTION/images/simulation1.jpg "OPTION simulation")
 
 ### Schematic diagram
-![CLOCK schematic]( "CLOCK schematic")
+![CLOCK schematic](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/CLOCK/images/schematic.jpg "CLOCK schematic")
 
 ### CLOCK
 ```vhdl
@@ -263,11 +263,11 @@ end Behavioral;
 ```
 
 ### simulation CLOCK
-![CLOCK simulation 1]( "CLOCK simulation 1")
-![CLOCK simulation 2]( "CLOCK simulation 2")
+![CLOCK simulation 1](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/CLOCK/images/simulation1.jpg "CLOCK simulation 1")
+![CLOCK simulation 2](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/CLOCK/images/simulation2.jpg "CLOCK simulation 2")
 
 ### Schematic diagram
-![COMPUTATION schematic]( "COMPUTATION schematic")
+![COMPUTATION schematic](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/COMPUTATION/images/schematic.jpg "COMPUTATION schematic")
 
 ### COMPUTATION
 ```vhdl
@@ -916,11 +916,11 @@ end Behavioral;
 ```
 
 ### simulation COMPUTATION
-![COMPUTATION simulation 1]( "COMPUTATION simulation 1")
-![COMPUTATION simulation 2]( "COMPUTATION simulation 2")
+![COMPUTATION simulation 1](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/COMPUTATION/images/simulation1.jpg "COMPUTATION simulation 1")
+![COMPUTATION simulation 2](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/COMPUTATION/images/simulation2.jpg "COMPUTATION simulation 2")
 
 ### Schematic diagram
-![DISPLAYER schematic]( "DISPLAYER schematic")
+![DISPLAYER schematic](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/DISPLAYER/images/schematic.jpg "DISPLAYER schematic")
 
 ### DISPLAYER
 ```vhdl
@@ -1071,13 +1071,13 @@ end architecture testbench;
 ```
 
 ### simulation DISPLAYER
-![DISPLAYER simulation 1]( "DISPLAYER simulation 1")
-![DISPLAYER simulation 2]( "DISPLAYER simulation 2")
-![DISPLAYER simulation 3]( "DISPLAYER simulation 3")
+![DISPLAYER simulation 1](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/DISPLAYER/images/simulation1.jpg "DISPLAYER simulation 1")
+![DISPLAYER simulation 2](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/DISPLAYER/images/simulation2.jpg "DISPLAYER simulation 2")
+![DISPLAYER simulation 3](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/DISPLAYER/images/simulation3.jpg "DISPLAYER simulation 3")
 
 ### External module
 DISPLAYER dává přímo informaci display_o pro externí navrženou desku se třemi sedmi segmentovými displeji. Zde máme jeho navržené schéma:
-![External module]( "External module")
+![External module](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/DISPLAYER/images/externalmodule.png "External module")
 Externí modul si sám převede číselnou informaci ve 4 bitové binární podobě na 7 bitovou infomaci pro sedmi segmentový displej, přičemž jeden bit je pro jeden segment displeje.
 Jeho nákres na desce plošných spojů:
 ![Printed circuit board]( "Printed circuit board")
@@ -1243,7 +1243,8 @@ end architecture testbench;
 ```
 
 ### simulation p_VELOCITY
-![p_VELOCITY simulation]( "p_VELOCITY simulation")
+![p_VELOCITY simulation 1](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/COMPUTATION/p_VELOCITY/images/simulation1.jpg "p_VELOCITY simulation 1")
+![p_VELOCITY simulation 2](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/COMPUTATION/p_VELOCITY/images/simulation2.jpg "p_VELOCITY simulation 2")
 
 ### p_AVG_VELOCITY
 ```vhdl
@@ -1442,10 +1443,10 @@ end architecture testbench;
 ```
 
 ### simulation p_AVG_VELOCITY
-![p_AVG_VELOCITY simulation 1]( "p_AVG_VELOCITY simulation 1")
-![p_AVG_VELOCITY simulation 2]( "p_AVG_VELOCITY simulation 2")
-![p_AVG_VELOCITY simulation 3]( "p_AVG_VELOCITY simulation 3")
-![p_AVG_VELOCITY simulation 4]( "p_AVG_VELOCITY simulation 4")
+![p_AVG_VELOCITY simulation 1](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/COMPUTATION/p_AVG_VELOCITY/images/simulation1.jpg "p_AVG_VELOCITY simulation 1")
+![p_AVG_VELOCITY simulation 2](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/COMPUTATION/p_AVG_VELOCITY/images/simulation2.jpg "p_AVG_VELOCITY simulation 2")
+![p_AVG_VELOCITY simulation 3](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/COMPUTATION/p_AVG_VELOCITY/images/simulation3.jpg "p_AVG_VELOCITY simulation 3")
+![p_AVG_VELOCITY simulation 4](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/COMPUTATION/p_AVG_VELOCITY/images/simulation4.jpg "p_AVG_VELOCITY simulation 4")
 
 ### p_DISTANCE
 ```vhdl
@@ -1730,8 +1731,8 @@ end architecture testbench;
 ```
 
 ### simulation p_DISTANCE
-![p_DISTANCE simulation 1]( "p_DISTANCE simulation 1")
-![p_DISTANCE simulation 2]( "p_DISTANCE simulation 2")
+![p_DISTANCE simulation 1](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/COMPUTATION/P_DISTANCE/images/simulation1.jpg "p_DISTANCE simulation 1")
+![p_DISTANCE simulation 2](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/COMPUTATION/P_DISTANCE/images/simulation2.jpg "p_DISTANCE simulation 2")
 
 ### p_OUTPUT
 ```vhdl
@@ -1934,8 +1935,8 @@ end Behavioral;
 ```
 
 ### simulation p_OUTPUT
-![p_OUTPUT simulation 1]( "p_OUTPUT simulation 1")
-![p_OUTPUT simulation 2]( "p_OUTPUT simulation 2")
+![p_OUTPUT simulation 1](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/COMPUTATION/P_OUTPUT/images/simulation1.jpg "p_OUTPUT simulation 1")
+![p_OUTPUT simulation 2](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/COMPUTATION/P_OUTPUT/images/simulation2.jpg "p_OUTPUT simulation 2")
 
 ## TOP module description and simulations (Arty A7-35)
 
@@ -2330,9 +2331,9 @@ set_property -dict { PACKAGE_PIN F5    IOSTANDARD LVCMOS33 } [get_ports { hall_i
 ```
 
 ### simulation TOP
-![TOP simulation 1]( "TOP simulation 1")
-![TOP simulation 2]( "TOP simulation 2")
-![TOP simulation 3]( "TOP simulation 3")
+![TOP simulation 1](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/TOP/images/simulation1.jpg "TOP simulation 1")
+![TOP simulation 2](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/TOP/images/simulation2.jpg "TOP simulation 2")
+![TOP simulation 3](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/TOP/images/simulation3.jpg "TOP simulation 3")
 
 ## Video
 
