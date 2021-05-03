@@ -2380,8 +2380,7 @@ set_property IOSTANDARD LVCMOS18 [get_ports {number_o[0]}]
 **Je potřeba si uvědomit, že distance bude v takovýchto simulacích vždy 0, jelikož je jeho jednotka v km a nikdo neujede za pár vteřin kilometr.**
 
 ## Video
-
-*Write your text here*
+[**Prezentace projektu videem**](https://youtu.be/edOG29XobNQ)
 
 ## Project valorization
 Stanovené cíle v sekci "project objectives" se nám podařilo z většiny splnit. Navržená deska se třemi sedmi segmentovými displeji funguje dobře počet displejů pro cyklo tachometr je dostačující.
