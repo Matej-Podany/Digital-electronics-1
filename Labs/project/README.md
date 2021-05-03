@@ -16,8 +16,23 @@ přičemž první z nich je aktuální rychlost, pak průměrná rychlost a jako
 k vynulování uražené vzdálenosti a průměrné rychlosti.
 
 ## Hardware description
-*Hodně si se zajímal o tuto část Pali, tak jestli chceš, můžeš to dokončit a PDF poslat zpět na Teams, já pak upravím to PDF na Githubu a budeme to moci odevzdat.
-Může tu být co k tomu potřebujeme, A35 deska, navržená deska atd., ale ty víš lépe než já, co tu má být :D*
+Pri návrhu schématu ako aj plošného zapojenia sme museli zohľadniť viacero 
+faktorov ako sú maximálne pracové napätia jednotlivých výstupov resp. vstupov. 
+Pre praktickosť zapojenia a redukovanie použitých výstupov sme sa rozhodli 
+použiť 4-bitový BCD dekóder pre jednotlivé 7-segmentové displaye zapojené 
+paralelne. Dekóder je z rady 74HC4543 ktorý dokáže pracovať s napäťovou 
+logikou 3,3V. Samotné 7-segmentové displaye su z výrobnej rady HD101, ktoré sa 
+spínaju jednotlivo tranzistormi T1 až T3 pre každý display zvlášť. Ako predradné 
+rezistory pre jednotivé segmenty displaya sme zvolili jeden integrovaný rezistor 
+(zapuzdrená rezistorová rada) s hodnotou odporu 100R. Pri zostavovaní schématu
+sme zohľadnili cenu a dostupnosť použitých súčiastok. V návrhu plošného zapojenia
+sme u niektorých súčiastok použili variantu SMD aby sme tak zredukovali samotnú 
+veľkosť dosky. Ako pripojovací konektor sme zvolili štandardizovaný angle type
+2,54mm ktorý korešponduje s konektorom na doske A7-35. Konektor je umiestnení z
+boku tak aby bola zjednodušená čitaťeľnosť displaya pri prípadnej praktickej 
+realizácii. Spotreba pri plne rozsvietených dislayoch nepresahuje povolený limit 
+1A. Ako posledným štylistickým krokom sme v doske obsiahli poligón ktorý 
+redukuje chybovosť a straty na medenej vrstve. Výsledná doska má tak rozmery 50x40mm.
 
 ## VHDL modules description and simulations
 
