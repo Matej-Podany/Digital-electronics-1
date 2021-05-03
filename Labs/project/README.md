@@ -2351,6 +2351,7 @@ set_property IOSTANDARD LVCMOS18 [get_ports {number_o[0]}]
 ![TOP simulation 1](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/TOP/images/simulation1.jpg "TOP simulation 1")
 ![TOP simulation 2](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/TOP/images/simulation2.jpg "TOP simulation 2")
 ![TOP simulation 3](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/TOP/images/simulation3.jpg "TOP simulation 3")
+**Je potřeba si uvědomit, že distance bude v takovýchto simulacích vždy 0, jelikož je jeho jednotka v km a nikdo neujede za pár vteřin kilometr.**
 
 ## Video
 
