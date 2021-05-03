@@ -1082,13 +1082,24 @@ end architecture testbench;
 ![DISPLAYER simulation 3](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/DISPLAYER/images/simulation3.jpg "DISPLAYER simulation 3")
 
 ### External module
-DISPLAYER dává přímo informaci display_o pro externí navrženou desku se třemi sedmi segmentovými displeji. Zde máme jeho navržené schéma:
+DISPLAYER dává přímo informaci display_o pro externí navrženou desku se třemi sedmi segmentovými displeji. Je navržený i pro funkci desetinné tečky, této funkce však nevyužijeme. Zde máme jeho navržené schéma:
 ![External module](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/DISPLAYER/images/externalmodule.png "External module")
 
 
 Externí modul si sám převede číselnou informaci ve 4 bitové binární podobě na 7 bitovou infomaci pro sedmi segmentový displej, přičemž jeden bit je pro jeden segment displeje.
 Je navržen pro konektor angle type 2,5 mm standard. Jeho nákres na desce plošných spojů:
 ![Printed circuit board](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/DISPLAYER/images/printedcircuitboard.png "Printed circuit board")
+
+Zde pak následuje tabulka propojení portů desky Arty A7-35 s navrženou deskou:
+| **Arty A7-35 pin names** | **Printed circuit board pin names** |
+| :-: | :-: |
+| G13 | SV2+ 11 |
+| B11 | SV2+ 9 |
+| A11 | SV2+ 7 |
+| D12 | SV2+ 5 |
+| D13 | SV2+ 10 |
+| B18 | SV2+ 8 |
+| A18 | SV2+ 6 |
 
 ### p_VELOCITY
 ```vhdl
