@@ -16,8 +16,8 @@ use ieee.numeric_std.all;
 entity distance is
   Port ( 
     sensor_i     : in std_logic;
-    reset_i    : in std_logic;
-    distance_o : out std_logic_vector(10-1 downto 0) := "0000000000"
+    areset_i     : in std_logic;
+    distance_o   : out std_logic_vector(10-1 downto 0) := "0000000000"
   );
 end distance;
 
@@ -26,12 +26,12 @@ architecture Behavioral of distance is
     signal s_distance : unsigned(10-1 downto 0) := "0000000000"; -- necessary for summing
 
     begin
-        p_distance : process(sensor_i, reset_i)
+        p_distance : process(sensor_i, areset_i)
         
         variable sum : integer := 0; -- counts input signals 
         
         begin
-            if rising_edge(reset_i) then
+            if areset_i = '1' then
                 sum := 0;
                 s_distance <= "0000000000";
             else

@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Company: VUT FEKT
--- Engineer: Rajm Jan
+-- Engineer: Rajm Jan, Mat?j Podaný
 -- 
 -- Design Name: p_AVG_VELOCITY
 -- Module Name: COMPUTATION
@@ -16,10 +16,10 @@ use ieee.numeric_std.all;               -- Needed for shifts
 
 entity avg_velocity is
     Port (
-        clk1hz_i       : in std_logic;
-        reset_i        : in std_logic;
-        vel2avg_i      : in std_logic_vector(10-1 downto 0);
-        avg_velocity_o : out std_logic_vector(10-1 downto 0)  := "0000000000"  
+        clk1hz_i        : in std_logic;
+        areset_i        : in std_logic;
+        vel2avg_i       : in std_logic_vector(10-1 downto 0);
+        avg_velocity_o  : out std_logic_vector(10-1 downto 0)  := "0000000000"  
     );
 end avg_velocity;
  
@@ -29,14 +29,14 @@ architecture behave of avg_velocity is
   
 begin
  
-p_avg_velocity : process(clk1hz_i, reset_i)
+p_avg_velocity : process(clk1hz_i, areset_i)
 
   variable count_of_shifts     : integer    := 1;
   variable clk_cycles          : integer    := 2; -- states for how many clock cycles does signal sum_of_velocities adds samples of 
                                                   --   velocity and for how long does process wait for division
     begin
     
-    if rising_edge(reset_i) then
+    if areset_i = '1' then
         avg_velocity_o      <= "0000000000"; -- zeroing value of avarage velocity
         sum_of_velocities   <= "0000000000"; -- zeroing of sum of velocities
         count_of_shifts := 1;

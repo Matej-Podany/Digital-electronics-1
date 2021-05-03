@@ -54,7 +54,7 @@ architecture Behavioral of option is
     signal s_state  : state;
     
 begin
-    p_choose_state : process(btn_i)
+    p_choose_state : process(btn_i, s_state)
     begin
         case s_state is
             when VELOCITY =>
@@ -273,7 +273,7 @@ end Behavioral;
 ```vhdl
 ----------------------------------------------------------------------------------
 -- Company: VUT FEKT
--- Engineer: Rajm Jan
+-- Engineer: Rajm Jan, Mat?j Podaný
 -- 
 -- Design Name: COMPUTATION
 -- Module Name: COMPUTATION
@@ -291,7 +291,7 @@ entity computation is
     reset_i    : in std_logic;
     clk1hz_i   : in std_logic;
     sensor_i   : in std_logic;
-    value_o    : out std_logic_vector(10-1 downto 0)
+    s1_value   : out std_logic_vector(10-1 downto 0)
   );
 end computation;
 
@@ -309,10 +309,10 @@ p_velocity : entity work.velocity
             velocity_o => s_velocity
         );
 
-p_avg_velocity : entity work.e_avg_velocity 
+p_avg_velocity : entity work.avg_velocity 
         port map(
             clk1hz_i       => clk1hz_i,
-            reset_i        => reset_i,
+            areset_i        => reset_i,
             vel2avg_i      => s_velocity,
             avg_velocity_o => s_avg_velocity
         );
@@ -320,7 +320,7 @@ p_avg_velocity : entity work.e_avg_velocity
 p_distance : entity work.distance 
         port map(
             sensor_i   => sensor_i,
-            reset_i    => reset_i,
+            areset_i    => reset_i,
             distance_o => s_distance
         );
         
@@ -333,6 +333,12 @@ p_output : entity work.output
             velocity_i     => s_velocity,
             value_o        => s_value
         );
+ p_finaloutput : process(clk1hz_i)
+        begin
+            if rising_edge(clk1hz_i) then
+                s1_value <= s_value;
+            end if;
+        end process p_finaloutput;
 end Behavioral;
 ```
 
@@ -926,7 +932,7 @@ end Behavioral;
 ```vhdl
 ----------------------------------------------------------------------------------
 -- Company: VUT FEKT
--- Engineer: Rohal´ Pavol
+-- Engineer: Rohal´ Pavol, Mat?j Podaný
 -- 
 -- Design Name: DISPLAYER
 -- Module Name: DISPLAYER
@@ -946,9 +952,9 @@ use ieee.numeric_std.all;
 entity displayer is                                             --entity of displayer block (all requier inputs/outputs)
     port(
         clk125hz_i  : in std_logic;
-        value_i     : in std_logic_vector(10 - 1 downto 0);       
-        display_o   : out std_logic_vector(4 - 1 downto 0);        
-        seg_o       : out std_logic_vector(3 - 1 downto 0);
+        value_i     : in std_logic_vector(10 - 1 downto 0) := "0000000000";       
+        display_o   : out std_logic_vector(3 - 1 downto 0);        
+        seg_o       : out std_logic_vector(4 - 1 downto 0);
         cnt         : out std_logic_vector(2 - 1 downto 0)      --outputing <cnt> only for visualizing in WF
     );
 end entity displayer;
@@ -977,9 +983,9 @@ architecture dataflow of displayer is
         s_d3 <= dec-(s_d1*100)-(s_d2*10);
 
         case s_count is                                                                             --case statment for writing individual data to specific segment
-            when 0 => display_o <= std_logic_vector(to_unsigned(s_d1, 4)); seg_o <= "001";
-            when 1 => display_o <= std_logic_vector(to_unsigned(s_d2, 4)); seg_o <= "010";
-            when others => display_o <= std_logic_vector(to_unsigned(s_d3, 4)); seg_o <= "100";
+            when 0 => seg_o <= std_logic_vector(to_unsigned(s_d1, 4)); display_o <= "001";
+            when 1 => seg_o <= std_logic_vector(to_unsigned(s_d2, 4)); display_o <= "010";
+            when others => seg_o <= std_logic_vector(to_unsigned(s_d3, 4)); display_o <= "100";
         end case;
     end process p_stimulus;
 end architecture dataflow;
@@ -1020,9 +1026,9 @@ architecture testbench of tb_displayer is       --define all require signals and
     
     signal s_clk_125Hz  : std_logic;
     signal s_value      : std_logic_vector(10 - 1 downto 0);
-    signal s_display    : std_logic_vector(4 - 1 downto 0);
+    signal s_display    : std_logic_vector(3 - 1 downto 0);
     signal s_cnt        : std_logic_vector(2 - 1 downto 0);
-    signal s_seg        : std_logic_vector(3 - 1 downto 0);
+    signal s_seg        : std_logic_vector(4 - 1 downto 0);
 
 begin
     uut_displayer : entity work.displayer       --porting all inputs/outputs
@@ -1078,9 +1084,11 @@ end architecture testbench;
 ### External module
 DISPLAYER dává přímo informaci display_o pro externí navrženou desku se třemi sedmi segmentovými displeji. Zde máme jeho navržené schéma:
 ![External module](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/DISPLAYER/images/externalmodule.png "External module")
+
+
 Externí modul si sám převede číselnou informaci ve 4 bitové binární podobě na 7 bitovou infomaci pro sedmi segmentový displej, přičemž jeden bit je pro jeden segment displeje.
-Jeho nákres na desce plošných spojů:
-![Printed circuit board]( "Printed circuit board")
+Je navržen pro konektor angle type 2,5 mm standard. Jeho nákres na desce plošných spojů:
+![Printed circuit board](https://github.com/Matej-Podany/Digital-electronics-1/blob/main/Labs/project/DISPLAYER/images/printedcircuitboard.png "Printed circuit board")
 
 ### p_VELOCITY
 ```vhdl
@@ -1250,7 +1258,7 @@ end architecture testbench;
 ```vhdl
 ----------------------------------------------------------------------------------
 -- Company: VUT FEKT
--- Engineer: Rajm Jan
+-- Engineer: Rajm Jan, Matěj Podaný
 -- 
 -- Design Name: p_AVG_VELOCITY
 -- Module Name: COMPUTATION
@@ -1264,29 +1272,29 @@ use IEEE.math_real.all;                 -- Needed for power
 use ieee.std_logic_1164.all;            -- Basic library
 use ieee.numeric_std.all;               -- Needed for shifts
 
-entity e_avg_velocity is
+entity avg_velocity is
     Port (
-        clk1hz_i       : in std_logic;
-        reset_i        : in std_logic;
-        vel2avg_i      : in std_logic_vector(10-1 downto 0);
-        avg_velocity_o : out std_logic_vector(10-1 downto 0)  := "0000000000"  
+        clk1hz_i        : in std_logic;
+        areset_i        : in std_logic;
+        vel2avg_i       : in std_logic_vector(10-1 downto 0);
+        avg_velocity_o  : out std_logic_vector(10-1 downto 0)  := "0000000000"  
     );
-end e_avg_velocity;
+end avg_velocity;
  
-architecture behave of e_avg_velocity is
+architecture behave of avg_velocity is
 
   signal sum_of_velocities     : unsigned(10-1 downto 0) := "0000000000";
   
 begin
  
-p_avg_velocity : process(clk1hz_i, reset_i)
+p_avg_velocity : process(clk1hz_i, areset_i)
 
   variable count_of_shifts     : integer    := 1;
   variable clk_cycles          : integer    := 2; -- states for how many clock cycles does signal sum_of_velocities adds samples of 
                                                   --   velocity and for how long does process wait for division
     begin
     
-    if rising_edge(reset_i) then
+    if areset_i = '1' then
         avg_velocity_o      <= "0000000000"; -- zeroing value of avarage velocity
         sum_of_velocities   <= "0000000000"; -- zeroing of sum of velocities
         count_of_shifts := 1;
@@ -1303,8 +1311,8 @@ p_avg_velocity : process(clk1hz_i, reset_i)
             end if;
         
             clk_cycles := clk_cycles - 1;        
-          
-        end if;
+      
+    end if;
     end if;
   end process p_avg_velocity;
 end architecture behave;
@@ -1354,7 +1362,7 @@ begin
         port map(
             clk1hz_i                         => s_clk,
             vel2avg_i                        => s_velocity,
-            reset_i                          => reset,
+            areset_i                          => reset,
             std_logic_vector(avg_velocity_o) => s_avg_velocity
         );
 
@@ -1452,7 +1460,7 @@ end architecture testbench;
 ```vhdl
 ----------------------------------------------------------------------------------
 -- Company: VUT FEKT
--- Engineer: Rajm Jan, Matěj Podaný
+-- Engineer: Rajm Jan, Mat?j Podaný
 -- 
 -- Design Name: p_DISTANCE
 -- Module Name: COMPUTATION
@@ -1468,8 +1476,8 @@ use ieee.numeric_std.all;
 entity distance is
   Port ( 
     sensor_i     : in std_logic;
-    reset_i    : in std_logic;
-    distance_o : out std_logic_vector(10-1 downto 0) := "0000000000"
+    areset_i     : in std_logic;
+    distance_o   : out std_logic_vector(10-1 downto 0) := "0000000000"
   );
 end distance;
 
@@ -1478,18 +1486,18 @@ architecture Behavioral of distance is
     signal s_distance : unsigned(10-1 downto 0) := "0000000000"; -- necessary for summing
 
     begin
-        p_distance : process(sensor_i, reset_i)
+        p_distance : process(sensor_i, areset_i)
         
         variable sum : integer := 0; -- counts input signals 
         
         begin
-            if rising_edge(reset_i) then
+            if areset_i = '1' then
                 sum := 0;
                 s_distance <= "0000000000";
             else
                 if rising_edge(sensor_i) then
                     sum := sum + 1;
-                    if sum > 5 then --for simulation purpouse, in application: if sum > 500 then (...). We consider wheel with circuit of 2m thus 1km means 500 revolutions. 
+                    if sum > 500 then --for simulation purpouse, in application: if sum > 500 then (...). We consider wheel with circuit of 2m thus 1km means 500 revolutions. 
                       sum := 0;
                       s_distance <= s_distance + "0000000001";    
                     end if;
@@ -1541,7 +1549,7 @@ begin
         port map (
             
             sensor_i     =>  s_signal,
-            reset_i    =>  reset,
+            areset_i    =>  reset,
             distance_o => s_distance
         );
     p_reset_gen : process
@@ -1738,7 +1746,7 @@ end architecture testbench;
 ```vhdl
 ----------------------------------------------------------------------------------
 -- Company: VUT FEKT
--- Engineer: Rajm Jan
+-- Engineer: Rajm Jan, Mat?j Podaný
 -- 
 -- Design Name: p_OUTPUT
 -- Module Name: COMPUTATION
@@ -1752,21 +1760,21 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity output is
   Port ( 
-    clk_i          : in  std_logic;
+    clk1hz_i          : in  std_logic;
     status_i       : in  std_logic_vector(2-1 downto 0);
     distance_i     : in  std_logic_vector(10-1 downto 0);
     avg_velocity_i : in  std_logic_vector(10-1 downto 0);
     velocity_i     : in  std_logic_vector(10-1 downto 0);
-    value_o        : out std_logic_vector(10-1 downto 0)
+    value_o        : out std_logic_vector(10-1 downto 0) := "0000000000"
   );
 end output;
 
 architecture Behavioral of output is
 
 begin
-p_output : process(status_i, clk_i)
+p_output : process(status_i, clk1hz_i)
     begin
-        if rising_edge(clk_i) then
+        if rising_edge(clk1hz_i) then
             case status_i is
                 when "00" =>
                     value_o <= velocity_i;
@@ -1813,7 +1821,7 @@ architecture Behavioral of tb_clock is
 begin
     uut_clock : entity work.output
         port map(
-            clk_i          => s_clk,
+            clk1hz_i          => s_clk,
             status_i       => s_status,
             distance_i     => s_distance,
             avg_velocity_i => s_avg_velocity,
@@ -2148,19 +2156,12 @@ end Behavioral;
 #set_property -dict { PACKAGE_PIN T10   IOSTANDARD LVCMOS33 } [get_ports { led[3] }]; #IO_L24N_T3_A00_D16_14 Sch=led[7]
 
 ## Buttons
-set_property -dict { PACKAGE_PIN D9    IOSTANDARD LVCMOS33 } [get_ports { button1_i }]; #IO_L6N_T0_VREF_16 Sch=btn[0]
-set_property -dict { PACKAGE_PIN C9    IOSTANDARD LVCMOS33 } [get_ports { button2_i }]; #IO_L11P_T1_SRCC_16 Sch=btn[1]
+set_property -dict {PACKAGE_PIN D9 IOSTANDARD LVCMOS33} [get_ports button1_i]
+set_property -dict {PACKAGE_PIN C9 IOSTANDARD LVCMOS33} [get_ports button2_i]
 #set_property -dict { PACKAGE_PIN B9    IOSTANDARD LVCMOS33 } [get_ports { btn[2] }]; #IO_L11N_T1_SRCC_16 Sch=btn[2]
 #set_property -dict { PACKAGE_PIN B8    IOSTANDARD LVCMOS33 } [get_ports { btn[3] }]; #IO_L12P_T1_MRCC_16 Sch=btn[3]
 
 ## Pmod Header JA
-set_property -dict { PACKAGE_PIN G13   IOSTANDARD LVCMOS33 } [get_ports { number_o(0) }]; #IO_0_15 Sch=ja[1]
-set_property -dict { PACKAGE_PIN B11   IOSTANDARD LVCMOS33 } [get_ports { number_o(1) }]; #IO_L4P_T0_15 Sch=ja[2]
-set_property -dict { PACKAGE_PIN A11   IOSTANDARD LVCMOS33 } [get_ports { number_o(2) }]; #IO_L4N_T0_15 Sch=ja[3]
-set_property -dict { PACKAGE_PIN D12   IOSTANDARD LVCMOS33 } [get_ports { number_o(3) }]; #IO_L6P_T0_15 Sch=ja[4]
-set_property -dict { PACKAGE_PIN D13   IOSTANDARD LVCMOS33 } [get_ports { adress_o(0) }]; #IO_L6N_T0_VREF_15 Sch=ja[7]
-set_property -dict { PACKAGE_PIN B18   IOSTANDARD LVCMOS33 } [get_ports { adress_o(1) }]; #IO_L10P_T1_AD11P_15 Sch=ja[8]
-set_property -dict { PACKAGE_PIN A18   IOSTANDARD LVCMOS33 } [get_ports { adress_o(2) }]; #IO_L10N_T1_AD11N_15 Sch=ja[9]
 #set_property -dict { PACKAGE_PIN K16   IOSTANDARD LVCMOS33 } [get_ports { ja[7] }]; #IO_25_15 Sch=ja[10]
 
 ## Pmod Header JB
@@ -2249,7 +2250,7 @@ set_property -dict { PACKAGE_PIN A18   IOSTANDARD LVCMOS33 } [get_ports { adress
 #set_property -dict { PACKAGE_PIN D14   IOSTANDARD LVCMOS33 } [get_ports { vaux0_p  }]; #IO_L1P_T0_AD0P_15 		Sch=ck_an_p[5]	ChipKit pin=A5
 ## ChipKit Outer Analog Header - as Digital I/O
 ## NOTE: the following constraints should be used when using these ports as digital I/O.
-set_property -dict { PACKAGE_PIN F5    IOSTANDARD LVCMOS33 } [get_ports { hall_i }]; #IO_0_35           	Sch=ck_a[0]		ChipKit pin=A0
+set_property -dict {PACKAGE_PIN F5 IOSTANDARD LVCMOS33} [get_ports hall_i]
 #set_property -dict { PACKAGE_PIN D8    IOSTANDARD LVCMOS33 } [get_ports { ck_a1 }]; #IO_L4P_T0_35      	Sch=ck_a[1]		ChipKit pin=A1
 #set_property -dict { PACKAGE_PIN C7    IOSTANDARD LVCMOS33 } [get_ports { ck_a2 }]; #IO_L4N_T0_35      	Sch=ck_a[2]		ChipKit pin=A2
 #set_property -dict { PACKAGE_PIN E7    IOSTANDARD LVCMOS33 } [get_ports { ck_a3 }]; #IO_L6P_T0_35      	Sch=ck_a[3]		ChipKit pin=A3
@@ -2319,7 +2320,7 @@ set_property -dict { PACKAGE_PIN F5    IOSTANDARD LVCMOS33 } [get_ports { hall_i
 #set_property -dict { PACKAGE_PIN L14   IOSTANDARD LVCMOS33 } [get_ports { qspi_dq[2] }]; #IO_L2P_T0_D02_14 Sch=qspi_dq[2]
 #set_property -dict { PACKAGE_PIN M14   IOSTANDARD LVCMOS33 } [get_ports { qspi_dq[3] }]; #IO_L2N_T0_D03_14 Sch=qspi_dq[3]
 
-## Power Measurements 
+## Power Measurements
 #set_property -dict { PACKAGE_PIN B17   IOSTANDARD LVCMOS33     } [get_ports { vsnsvu_n }]; #IO_L7N_T1_AD2N_15 Sch=ad_n[2]
 #set_property -dict { PACKAGE_PIN B16   IOSTANDARD LVCMOS33     } [get_ports { vsnsvu_p }]; #IO_L7P_T1_AD2P_15 Sch=ad_p[2]
 #set_property -dict { PACKAGE_PIN B12   IOSTANDARD LVCMOS33     } [get_ports { vsns5v0_n }]; #IO_L3N_T0_DQS_AD1N_15 Sch=ad_n[1]
@@ -2328,6 +2329,22 @@ set_property -dict { PACKAGE_PIN F5    IOSTANDARD LVCMOS33 } [get_ports { hall_i
 #set_property -dict { PACKAGE_PIN F13   IOSTANDARD LVCMOS33     } [get_ports { isns5v0_p }]; #IO_L5P_T0_AD9P_15 Sch=ad_p[9]
 #set_property -dict { PACKAGE_PIN A16   IOSTANDARD LVCMOS33     } [get_ports { isns0v95_n }]; #IO_L8N_T1_AD10N_15 Sch=ad_n[10]
 #set_property -dict { PACKAGE_PIN A15   IOSTANDARD LVCMOS33     } [get_ports { isns0v95_p }]; #IO_L8P_T1_AD10P_15 Sch=ad_p[10]
+
+set_property PACKAGE_PIN D13 [get_ports {number_o[0]}]
+set_property PACKAGE_PIN B18 [get_ports {number_o[1]}]
+set_property PACKAGE_PIN A18 [get_ports {number_o[2]}]
+set_property PACKAGE_PIN G13 [get_ports {adress_o[0]}]
+set_property PACKAGE_PIN B11 [get_ports {adress_o[1]}]
+set_property PACKAGE_PIN A11 [get_ports {adress_o[2]}]
+set_property PACKAGE_PIN D12 [get_ports {number_o[3]}]
+
+set_property IOSTANDARD LVCMOS18 [get_ports {adress_o[2]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {adress_o[1]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {adress_o[0]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {number_o[3]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {number_o[2]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {number_o[1]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {number_o[0]}]
 ```
 
 ### simulation TOP
@@ -2344,7 +2361,7 @@ Stanovené cíle v sekci "project objectives" se nám podařilo z většiny spln
 Podařilo se nám naprogramovat bezchybně počítání uražené vzdálenosti za ideální situace. To znamená, že poloměr kola, a tedy i jeho obvod je konstantní a kolo je nepřetržitě v kontaktu s cestou, přičemž nikdy neprokluzuje.
 Také jsme úspěšně vytvořili modul pro počítání průměrné rychlosti, který pomocí informace o aktuální rychlosti počítá váženým průměrem průměrnou rychlost. Jeho přesnost je vysoká, avšak dochází k zanedbatelnému zaokroluhlování
 na celá čísla, což ale způsobí přesnost na +- 1 km/h. Modul aktuální rychlosti je bohužel v nedostatečné kvalitě a jeho jednoduchý princip umožňuje ukázat rychlost pouze s přesností +- 3,5 km/h. Hodnoty, které dokáže
-zobrazit jsou 0 a násobky 7. Ostatní prvky jako tlačítka pro přepínání zobrazované informace a pro reset fungují bezchybně. Do budoucna by se tedy dalo rozhodně zlepšit modul aktuální rychlosti, který nevyhovuje
+zobrazit jsou 0 a násobky 7. Ostatní prvky jako tlačítka pro přepínání zobrazované informace a pro reset fungují bezchybně. Úspěšně probehla syntéza, implementace a vygenerování bitstreamu. Do budoucna by se tedy dalo rozhodně zlepšit modul aktuální rychlosti, který nevyhovuje
 našim stanoveným parametrům. Dále by se dalo vytvořit nastavení obvodu kola, které by mnohonásobně rozšířilo použitelnost tohoto cyklo tachometru. Závěrem tedy bych považoval projekt za úspěšný, který nám dal hodně
 zkušeností. Jsou tu nedostatky, avšak velmi dobře fungujících věcí je tu převaha.
  
@@ -2352,3 +2369,6 @@ zkušeností. Jsou tu nedostatky, avšak velmi dobře fungujících věcí je tu
 
    1. Digilent - [**Arty A7-35 schematic**](https://reference.digilentinc.com/_media/reference/programmable-logic/arty-a7/arty_a7_sch.pdf)
    2. Digilent - [**Arty A7-35 reference manual**](https://reference.digilentinc.com/reference/programmable-logic/arty-a7/reference-manual)
+   3. nandland - [**YouTube**](https://www.youtube.com/watch?v=ys1ftk5a2A4)
+   4. nandland - [**NANDLAND website**](https://www.nandland.com/vhdl/examples/example-shifts.html)
+   5. BITweenie - [**BITweenie website**](https://www.bitweenie.com/listings/vhdl-type-conversion/)

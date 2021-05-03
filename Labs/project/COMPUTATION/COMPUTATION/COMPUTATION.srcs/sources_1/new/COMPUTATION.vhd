@@ -39,7 +39,7 @@ p_velocity : entity work.velocity
 p_avg_velocity : entity work.avg_velocity 
         port map(
             clk1hz_i       => clk1hz_i,
-            reset_i        => reset_i,
+            areset_i        => reset_i,
             vel2avg_i      => s_velocity,
             avg_velocity_o => s_avg_velocity
         );
@@ -47,7 +47,7 @@ p_avg_velocity : entity work.avg_velocity
 p_distance : entity work.distance 
         port map(
             sensor_i   => sensor_i,
-            reset_i    => reset_i,
+            areset_i    => reset_i,
             distance_o => s_distance
         );
         
